@@ -9,7 +9,7 @@ Doors = Dict[int, str]
 random.seed()
 
 
-class MontyPython:
+class MontyHall:
     def __init__(self, door_count: int):
         self._door_count = door_count
         self._doors: Doors = {}
@@ -44,7 +44,7 @@ class MontyPython:
 
 
 parser = argparse.ArgumentParser(
-    description="Monty Python game N number of times",
+    description="Simulate Monty Hall game N number of times",
     formatter_class=argparse.ArgumentDefaultsHelpFormatter,
 )
 parser.add_argument(
@@ -69,7 +69,7 @@ lost = 0
 won = 0
 
 for count in range(number_of_games):
-    game = MontyPython(door_count)
+    game = MontyHall(door_count)
     game.pick_door(random.randrange(0, door_count))
     game.reveal_goat()
     if choice == "keep_door":
