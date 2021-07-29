@@ -34,7 +34,7 @@ Choosing change_door resulted in winning 66.89% of the time
 ❯ python3 monty-hall.py --help
 usage: monty-hall.py [-h] [--choice {keep_door,change_door}] [--number-of-games NUMBER_OF_GAMES] [--door-count DOOR_COUNT]
 
-Monty Python game N number of times
+Simulate Monty Hall game N number of times
 
 optional arguments:
   -h, --help            show this help message and exit
