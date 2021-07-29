@@ -33,7 +33,7 @@ class MontyHall:
         pass
 
     def change_choice(self) -> None:
-        while True:
+        while True and len(self._doors.keys()) > 1:
             choice: int = random.choice(list(self._doors.keys()))
             if choice != self._choice:
                 self._choice = choice
@@ -41,6 +41,13 @@ class MontyHall:
 
     def are_you_a_winner(self) -> bool:
         return True if self._doors[self._choice] == CAR else False
+
+
+def check_positive(value):
+    value = int(value)
+    if value <= 0:
+        raise argparse.ArgumentTypeError(f"Value {value} must be positive")
+    return value
 
 
 parser = argparse.ArgumentParser(
@@ -55,9 +62,11 @@ parser.add_argument(
     help="Keep or change your original door",
 )
 parser.add_argument(
-    "--number-of-games", type=int, default=10000, help="How many games shall we play"
+    "--number-of-games", type=check_positive, default=10000, help="How many games shall we play"
 )
-parser.add_argument("--door-count", type=int, default=3, help="number of doors to choose from")
+parser.add_argument(
+    "--door-count", type=check_positive, default=3, help="number of doors to choose from"
+)
 
 args = parser.parse_args()
 
